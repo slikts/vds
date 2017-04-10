@@ -7,9 +7,9 @@ const get = date => getVd(date).concat(getVdExt(date))
 const today = moment().format('DD-MM')
 const format = arr => arr.join(', ')
 const { log } = console
-const logDate = fn => console.log(format(fn(today)))
 const frmToday = moment().locale('lv').format('Do MMMM')
+const vds = format(getVd(today))
+const vdsExt = format(getVdExt(today))
 
-log(`📅 ${frmToday}`)
-logDate(getVd)
-logDate(getVdExt)
+log(`🎉 ${frmToday}:  ${vds}`)
+log(`🤷️ ${vdsExt}`)
