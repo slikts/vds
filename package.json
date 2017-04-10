@@ -1,6 +1,6 @@
 {
   "name": "vds",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "fuse.js": "^2.6.2",
+    "immutable": "^3.8.1",
     "moment": "^2.18.1"
   }
 }
