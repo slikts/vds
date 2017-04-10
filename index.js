@@ -8,7 +8,8 @@ const today = moment().format('DD-MM')
 const format = arr => arr.join(', ')
 const { log } = console
 const logDate = fn => console.log(format(fn(today)))
+const frmToday = moment().locale('lv').format('Do MMMM')
 
-log(moment().locale('lv').format('Do MMMM'))
+log(`📅 ${frmToday}`)
 logDate(getVd)
 logDate(getVdExt)
