@@ -1,3 +1,5 @@
 const vds = require('./src/vds')
 
-vds()
+if (require.main === module) {
+  vds()
+}

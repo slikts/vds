@@ -28,7 +28,7 @@ const data = (() => {
 })()
 
 const getVds = date => {
-  const key = date.format('DD-MM')
+  const key = date.format('MM-DD')
   return {
     vd: data.vd.get(key),
     ext: data.ext.get(key),
