@@ -1,6 +1,7 @@
 const moment = require('moment')
 const { Map, List } = require('immutable')
 const Fuse = require('fuse.js')
+const data = require('./data')
 
 const { log } = console
 const formatNames = names => `**${names.join(', ')}**`
@@ -8,24 +9,6 @@ const formatNamesAlt = names => `${names.join(', ')}`
 const localeFormatDate = date => date.locale('lv').format('Do MMMM')
 const dateFromKey = isoMonDay => moment(`0000-${isoMonDay}`)
 const getArg = (args = process.argv) => (args.includes('--') ? args.slice(args.lastIndexOf('--') + 1).join(' ') : null)
-
-const data = (() => {
-  const getItem = name => new Map(require(`../data/${name}.json`))
-  const vd = getItem('vd')
-  const ext = getItem('vd-ext')
-  return {
-    vd,
-    ext,
-    all() {
-      return vd
-      .map((names, dateKey) => names.concat(ext.get(dateKey)))
-      .map((names, dateKey) => new List(names.map(name => ({ name, dateKey }))))
-      .toList()
-      .flatten()
-      .toArray()
-    },
-  }
-})()
 
 const getVds = (date) => {
   const key = date.format('MM-DD')
