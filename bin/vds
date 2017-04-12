@@ -4,4 +4,4 @@ for last; do true; done
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
-/usr/bin/env node $SCRIPTPATH/../index.js -- $last
+/usr/bin/env node $SCRIPTPATH/.. -- $last

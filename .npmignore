@@ -1,0 +1,6 @@
+/test
+/dist-test
+.eslintrc.json
+.travis.yml
+.eslintignore
+.babelrc

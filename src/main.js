@@ -1,4 +1,4 @@
-const vds = require('./src/vds')
+const vds = require('./vds')
 
 const { log } = console
 
