@@ -44,7 +44,7 @@ const renderSearch = results =>
     return `${date}: ${formatNames(names)}`
   }).toArray()
 
-const vds = (arg = getArg(process.argv)) => {
+const main = (arg = getArg(process.argv)) => {
   debug('%s', arg)
   if (!arg) {
     return renderDate()
@@ -60,4 +60,8 @@ const vds = (arg = getArg(process.argv)) => {
   return ['?¿?¿?']
 }
 
-module.exports = vds
+module.exports = {
+  getVds,
+  main,
+  searchNames,
+}

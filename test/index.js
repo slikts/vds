@@ -1,21 +1,36 @@
+const moment = require('moment')
 const test = require('tape')
-const vds = require('../src/vds')
+const { main, getVds, searchNames } = require('../src/vds')
 
-test('empty arg', (t) => {
-  const res = vds()
+test('main empty arg', (t) => {
+  const res = main()
   t.equal(res.length, 2)
   t.end()
 })
 
-test('date param', (t) => {
-  const res = vds('10-12')
+test('main date param', (t) => {
+  const res = main('10-12')
   t.equal(res.length, 2)
   t.end()
 })
 
-test('name search', (t) => {
-  const res = vds('Barbara')
+test('main name search', (t) => {
+  const res = main('Barbara')
   t.equal(res.length, 2)
   t.ok(res[0].includes('Barbara'))
   t.end()
 })
+
+test('getVds', (t) => {
+  const vds = getVds(moment())
+  t.equal(String(Object.keys(vds)), String(['vd', 'ext']))
+  t.end()
+})
+
+test('searchNames', (t) => {
+  const name = 'Barbara'
+  const results = searchNames(name)
+  t.ok(results.get('12-04').includes(name))
+  t.end()
+})
+

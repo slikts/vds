@@ -1,9 +1,9 @@
-const vds = require('./vds')
+const { main } = require('./vds')
 
 const { log } = console
 
 if (require.main === module) {
-  log(vds().join('\n'))
+  log(main().join('\n'))
 }
 
-module.exports = vds
+module.exports = main
