@@ -1,15 +1,15 @@
 {
   "name": "vds",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "",
   "main": "dist/main.js",
   "scripts": {
     "lint": "eslint src",
     "test": "babel-node test",
     "clean": "rimraf dist",
-    "build": "babel src -d dist",
+    "build": "npm run clean && babel src -d dist",
     "test:watch": "nodemon test --exec babel-node",
-    "prepublish": "chmod +x bin/vds; npm run lint && npm run test"
+    "prepublish": "chmod +x bin/vds; npm run lint && npm run build && npm run test"
   },
   "keywords": [],
   "author": "",
