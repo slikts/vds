@@ -1,6 +1,6 @@
 {
   "name": "vds",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "",
   "main": "dist/main.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "fuse.js": "^2.6.2",
     "immutable": "^3.8.1",
     "moment": "^2.18.1",
-    "vardadienas": "^1.0.4"
+    "vardadienas": "^1.0.9"
   },
   "repository": {
     "type": "git",
