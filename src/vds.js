@@ -1,9 +1,9 @@
 const moment = require('moment')
-const { Map, List } = require('immutable')
+const { Map } = require('immutable')
 const Fuse = require('fuse.js')
 const data = require('./data')
+const debug = require('debug')('vds')
 
-const { log } = console
 const formatNames = names => `**${names.join(', ')}**`
 const formatNamesAlt = names => `${names.join(', ')}`
 const localeFormatDate = date => date.locale('lv').format('Do MMMM')
@@ -21,8 +21,10 @@ const getVds = (date) => {
 const renderDate = (dateSource = new Date()) => {
   const date = moment(dateSource)
   const vds = getVds(date)
-  log(`🎉 ${localeFormatDate(date)}:  ${formatNames(vds.vd)}`)
-  log(`🤓 ${formatNamesAlt(vds.ext)}`)
+  return [
+    `🎉 ${localeFormatDate(date)}:  ${formatNames(vds.vd)}`,
+    `🤓 ${formatNamesAlt(vds.ext)}`,
+  ]
 }
 
 const searchNames = (text) => {
@@ -36,29 +38,26 @@ const searchNames = (text) => {
   .reduce(collect, new Map())
 }
 
-const renderSearch = (results) => {
-  results.forEach((names, key) => {
+const renderSearch = results =>
+  results.map((names, key) => {
     const date = localeFormatDate(dateFromKey(key))
-    log(`${date}: ${formatNames(names)}`)
-  })
-}
+    return `${date}: ${formatNames(names)}`
+  }).toArray()
 
-const run = (arg = getArg(process.argv)) => {
-  const dateArg = new Date(arg).toJSON()
+const vds = (arg = getArg(process.argv)) => {
+  debug('%s', arg)
   if (!arg) {
-    renderDate()
-    return
+    return renderDate()
   }
+  const dateArg = new Date(arg).toJSON()
   if (dateArg) {
-    renderDate(dateArg)
-    return
+    return renderDate(dateArg)
   }
   const results = searchNames(arg)
   if (results.size) {
-    renderSearch(results)
-    return
+    return renderSearch(results)
   }
-  log('?¿?¿?')
+  return ['?¿?¿?']
 }
 
-module.exports = run
+module.exports = vds

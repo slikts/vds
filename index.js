@@ -1,7 +1,9 @@
 const vds = require('./src/vds')
 
+const { log } = console
+
 if (require.main === module) {
-  vds()
+  log(vds().join('\n'))
 }
 
 module.exports = vds
