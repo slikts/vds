@@ -1,5 +1,5 @@
 const test = require('tape')
-const vds = require('../dist/vds')
+const vds = require('../src/vds')
 
 test('empty arg', (t) => {
   const res = vds()
